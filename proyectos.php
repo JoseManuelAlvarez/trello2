@@ -16,15 +16,11 @@ include_once('./plantilla/header.php');
             </div>
         </div>
         <div id="tarea-editar">
+            <input type="text" name="idTarea" id="idTarea" hidden>
             <input type="text" name="titulo-tarea" id="titulo-tarea" placeholder="Titulo de la tarea">
+            <button class="btn btn-primary" onclick="guardarEdicionTarea()">Guardar</button>
             <button class="btn btn-warning" onclick="cerrarEdicionTarea()">Cerrar</button>
             <table class="tabla-edicion">
-                <thead>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </thead>
                 <tr>
                     <td>Autor</td>
                     <td><input type="text" id="nameAutor-tarea" name="nameAutor-tarea" class="tarea-option" placeholder="Autor"></td>
@@ -51,9 +47,12 @@ include_once('./plantilla/header.php');
                 </tr>
                 <tr>
                     <td>Status</td>
-                    <td></td>
+                    <td><?php include('/php/consultar_status.php') ?></td>
                 </tr>
             </table>
+            <div id="content-body-tarea">
+
+            </div>
         </div>
     </div>
     

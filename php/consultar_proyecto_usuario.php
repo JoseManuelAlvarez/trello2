@@ -41,8 +41,9 @@
             }else{
                 $titulo = trim($row['nombre']);
             }
+            $color = consultarColor(trim($row['status']));
             $GLOBALS['data']['columns'] .=  '<div class="cardT">
-                                                <div class="card-status"></div>
+                                                <div class="card-status" style="background-color: #'.$color.'"></div>
                                                 <div class="cardt-body">
                                                     <h5 class="cardt-title">'.$titulo.'</h5>
                                                     <p class="card-text">'.$row['body'].'</p>
@@ -50,5 +51,15 @@
                                                 </div>
                                             </div>';
         }
+    }
+
+    function consultarColor($status) {
+        $color = '';
+        $sql = $GLOBALS['conn']->query('SELECT * FROM categoria WHERE secno ='.$status);
+        $rows = $sql->fetchAll();
+        foreach($rows as $row) {
+            $color = trim($row['COLOR']);
+        }
+        return $color;
     }
     name_function($id);

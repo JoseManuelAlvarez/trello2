@@ -75,12 +75,29 @@ function editarTarea(id) {
     console.log('Tarea seleccionada: '+id)
     $.ajax({
         type: 'POST', 
-        url: url,
-        data: 'atribute=' + atribute+'&atribute1='+atribute1, 
-        //dataType: 'json',
+        url: './php/consultar_tarea_folio.php',
+        data: 'idTarea=' + id,
+        dataType: 'json',
         success: function(data) {
-            //console.log(data);
-            //console.log(data.consulta);
+            console.log(data);
+
+            
+            $('#idTarea').val(id);
+            $('#titulo-tarea').val(data.TITULO);
+            $('#nameAutor-tarea').val(data.AUTOR);
+            $('#selePerson-tarea').val(data.ASIGNADO);
+            $('#fechaCreacion-tarea').val(data.CREATEAT);
+            $('#fechaVencimiento-tarea').val(data.UPDATEAT);
+            $('#fechaVencimiento-tarea').val(data.UPDATEAT);
+            $('#categoria-tarea').val(data.STATUS);
+            document.getElementById('content-body-tarea').innerHTML = data.BODYTAREA;
+            
+            /*
+            
+            $('#adsd').value(data.ASIGNADO);
+            $('#adsd').value(data.TITULO);
+            $('#adsd').value(data.BODY);
+            */
         },
         error: function(jqXHR, estado, error) {
             //console.log('Estado: ' + estado);
@@ -88,11 +105,13 @@ function editarTarea(id) {
             console.log(jqXHR);
         },
     });
-    
     document.getElementById('tarea-editar').style.display = 'block';
-
 }
-
 function cerrarEdicionTarea() {
     document.getElementById('tarea-editar').style.display = 'none';
+}
+function guardarEdicionTarea() {
+    let idTarea = $('#idTarea').val();
+    console.log('guardar tarea del idTarea: '+idTarea);
+    // Aqui se debe de guardar la tarea
 }

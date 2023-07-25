@@ -14,6 +14,7 @@
         'CREATEAT'  => '',
         'UPDATEAT'  => '',
         'BODYTAREA' => '',
+        'NUMELEMENT'=> 1,
     );
     /*if(!isset($_POST['idTarea'])){
         echo json_encode($data);
@@ -35,11 +36,9 @@
             $GLOBALS['data']['CREATEAT']    = $CREATED[0];
             $GLOBALS['data']['UPDATEAT']    = $UPDATED[0];
             $GLOBALS['data']['BODYTAREA']   = convertirContenido(trim($row['body']));
-            
             echo json_encode($GLOBALS['data']);
         }
     }
-
     function consultarUsuario($id) {
         $name = '';
         $sql = $GLOBALS['conn']->query('SELECT * FROM usuarios WHERE idUser ='.$id);
@@ -54,25 +53,25 @@
         $renglon = explode("/n", $body);
         for ($i=0; $i < count($renglon); $i++) { 
             if (strpos($renglon[$i], "/h1") !== false) {
-                $content .= "<h1>".substr($renglon[$i], 3, strlen($renglon[$i]))."</h1>";
+                $content .= "<input type='text' class='h1 sinBorder full-width' name='element-".$i."' id='element-".$i."' value='".substr($renglon[$i], 3, strlen($renglon[$i]))."'>";
             }
             if (strpos($renglon[$i], "/h2") !== false) {
-                $content .= "<h2>".substr($renglon[$i], 3, strlen($renglon[$i]))."</h2>";
+                $content .= "<input type='text' class='h2 sinBorder full-width' name='element-".$i."' id='element-".$i."' value='".substr($renglon[$i], 3, strlen($renglon[$i]))."'>";
             }
             if (strpos($renglon[$i], "/h3") !== false) {
-                $content .= "<h3>".substr($renglon[$i], 3, strlen($renglon[$i]))."</h3>";
+                $content .= "<input type='text' class='h3 sinBorder full-width' name='element-".$i."' id='element-".$i."' value='".substr($renglon[$i], 3, strlen($renglon[$i]))."'>";
             }
             if (strpos($renglon[$i], "/h4") !== false) {
-                $content .= "<h4>".substr($renglon[$i], 3, strlen($renglon[$i]))."</h4>";
+                $content .= "<input type='text' class='h4 sinBorder full-width' name='element-".$i."' id='element-".$i."' value='".substr($renglon[$i], 3, strlen($renglon[$i]))."'>";
             }
             if (strpos($renglon[$i], "/h5") !== false) {
-                $content .= "<h5>".substr($renglon[$i], 3, strlen($renglon[$i]))."</h5>";
+                $content .= "<input type='text' class='h5 sinBorder full-width' name='element-".$i."' id='element-".$i."' value='".substr($renglon[$i], 3, strlen($renglon[$i]))."'>";
             }
             if (strpos($renglon[$i], "/h6") !== false) {
-                $content .= "<h6>".substr($renglon[$i], 3, strlen($renglon[$i]))."</h6>";
+                $content .= "<input type='text' class='h6 sinBorder full-width' name='element-".$i."' id='element-".$i."' value='".substr($renglon[$i], 3, strlen($renglon[$i]))."'>";
             }
             if (strpos($renglon[$i], "/p") !== false) {
-                $content .= "<p>".substr($renglon[$i], 3, strlen($renglon[$i]))."</p>";
+                $content .= "<input type='text' class='p sinBorder full-width' name='element-".$i."' id='element-".$i."' value='".substr($renglon[$i], 4, strlen($renglon[$i]))."'>";
             }
             if (strpos($renglon[$i], "/lu") !== false) {
                 $content .= "<lu>";
@@ -81,19 +80,19 @@
                 $content .= "</lu>";
             }
             if (strpos($renglon[$i], "/li") !== false) {
-                $content .= "<li>".substr($renglon[$i], 4, strlen($renglon[$i]))."</li>";
+                $content .= "<li class='full-width'><input type='text' class=' sinBorder width-90' name='element-".$i."' id='element-".$i."' value='".substr($renglon[$i], 4, strlen($renglon[$i]))."'></li>";
             }
             if (strpos($renglon[$i], "/br") !== false) {
                 $content .= "<br>";
             }
             if(strpos($renglon[$i], "/ck") !== false){
                 if(trim(substr($renglon[$i],4,6)) == "true" ){
-                    $content .= "<input type='checkbox' name='check".$i."' checked ><label for='check".$i."'> ".substr($renglon[$i], 10, strlen($renglon[$i]))."</label>";
+                    $content .= "<input type='checkbox' class='sinBorder' name='check".$i."' checked ><label for='check".$i."' class='width-90' > <input type='text' class=' sinBorder width-90' name='element-".$i."' id='element-".$i."' value='".substr($renglon[$i], 10, strlen($renglon[$i]))."'></label>";
                 }else{
-                    $content .= "<input type='checkbox' name='check".$i."'><label for='check".$i."'> ".substr($renglon[$i], 14, strlen($renglon[$i]))."</label>";
+                    $content .= "<input type='checkbox' class='sinBorder' name='check".$i."'><label for='check".$i."' class='width-90' > <input type='text' class=' sinBorder width-90' name='element-".$i."' id='element-".$i."' value='".substr($renglon[$i], 14, strlen($renglon[$i]))."'></label>";
                 }
-                
             }
+            $GLOBALS['data']['NUMELEMENT'] ++;
         }
         return $content;
     }

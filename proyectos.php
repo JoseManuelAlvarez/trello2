@@ -22,11 +22,11 @@ include_once('./plantilla/header.php');
             <button class="btn btn-warning" onclick="cerrarEdicionTarea()">Cerrar</button>
             <table class="tabla-edicion">
                 <tr>
-                    <td>Autor</td>
+                    <td style="padding-left: 10px;" > Autor</td>
                     <td><input type="text" id="nameAutor-tarea" name="nameAutor-tarea" class="tarea-option" placeholder="Autor"></td>
                 </tr>
                 <tr>
-                    <td>Asigando</td>
+                    <td style="padding-left: 10px;"> Asigando</td>
                     <td>
                         <select name="selePerson-tarea" id="selePerson-tarea" class="tarea-option">
                             <option value="1">1 empleado</option>
@@ -38,21 +38,23 @@ include_once('./plantilla/header.php');
                     </td>
                 </tr>
                 <tr>
-                    <td>fecha</td>
+                    <td style="padding-left: 10px;"> Fecha</td>
                     <td><input type="date" name="fechaCreacion-tarea" id="fechaCreacion-tarea" class="tarea-option"></td>
                 </tr>
                 <tr>
-                    <td>Fecha Vencimiento</td>
+                    <td style="padding-left: 10px;"> Fecha Vencimiento</td>
                     <td><input type="date" name="fechaVencimiento-tarea" id="fechaVencimiento-tarea" class="tarea-option"></td>
                 </tr>
                 <tr>
-                    <td>Status</td>
+                    <td style="padding-left: 10px;"> Status</td>
                     <td><?php include('/php/consultar_status.php') ?></td>
                 </tr>
             </table>
             <div id="content-body-tarea">
 
             </div>
+            <input type="number" name="numElement" id="numElement" hidden>
+            <input type="text" class="sinBorder full-width" name="nuevo-elemento" id="nuevo-elemento" placeholder= "Ingrese / para desplegar las opciones">
         </div>
     </div>
     

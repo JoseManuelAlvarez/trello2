@@ -98,7 +98,7 @@ ul ol {
 }
 .card-status {
   /*background-color: red;*/
-  width: 15px;
+  min-width: 15px;
   border-top-left-radius: 1.4rem;
   border-bottom-left-radius: 1.4rem;
 }
@@ -146,4 +146,28 @@ td {
   line-height: inherit !important;
   text-align: center;
   margin: 2px 0px;
+}
+.sinBorder {
+  border: none !important;
+}
+.full-width {
+  width: 100%;
+}
+.width-90{
+  width: 90%;
+}
+.h1 {
+  font-size: 36px;
+  margin-top: 20px;
+  margin-bottom: 10px;  
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+}
+.p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
 }
